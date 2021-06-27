@@ -1,13 +1,5 @@
-import { Text, Box, Input, Button, Image, Spacer } from "@chakra-ui/react";
-import {
-  FormLabel,
-  NumberInput,
-  NumberInputField,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInputStepper,
-} from "@chakra-ui/react";
-import approve from "../assets/images/approve.jpg";
+import { Text, Box, Input, Button, Center, Spacer, Container, FormLabel } from "@chakra-ui/react";
+import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { useToken } from "../context/TokenContext";
 import { useContext, useState, useEffect } from "react";
 import { Web3Context } from "web3-hooks"
@@ -18,7 +10,7 @@ import { ethers } from "ethers";
 import AlertPop from "./AlertPop";
 import { CircularProgress } from "@chakra-ui/react"
 
-const Approval = () => {
+const Approval = ({id, setValue}) => {
   const [web3State] = useContext(Web3Context)
   const { token } = useToken()
   const [loading, setLoading] = useState(false)
@@ -89,12 +81,8 @@ const Approval = () => {
     }
   }, [CPR, toast, token, web3State.account])
   return (
-    <>
-      <Text align="center" fontSize="3xl">
-        Approval
-      </Text>
-      <Box  maxW="md" borderWidth="2px" borderRadius="md" boxShadow="2xl" p="10" overflow="hidden">
-        <Image src={approve} alt="image" height="" />
+    <Container centerContent mt="-3rem" fontWeight="bold">
+      <Text align="center" fontSize="3xl">Approval</Text>
         <form onSubmit={handleSubmit(handleSubmitButton)} id="first-name" m={2}>
           <FormLabel>To address</FormLabel>
           <Input placeholder="Authorize this contract to spend your moula" mb={2} isRequired
@@ -104,18 +92,13 @@ const Approval = () => {
             })}
           />
           {errors.approveAddress && <AlertPop title={errors.approveAddress.message} />}
-          <FormLabel>Amount</FormLabel>
-            <NumberInput isRequired min={1} mb={4} >
-              <NumberInputField {...register("amountApprove")}/>
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-            <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Approving...</p></>) : "Approve"}</Button>
+            <Center>
+              <Button onClick={() => setValue("transferFrom")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowLeftIcon /></Button>
+              <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Send"}</Button>
+              <Button onClick={() => setValue("approve")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowRightIcon /></Button>
+            </Center>
          </form>
-      </Box>
-    </>
+    </Container>
   );
 };
 

@@ -77,7 +77,7 @@ function Login({ title, desc, ...rest }) {
                 fontSize="4xl"
                 fontWeight="extrabold"
               >
-                Welcome to Faucet
+                Welcome to NFT master moon
               </Text>
             </Heading>
           </VStack>

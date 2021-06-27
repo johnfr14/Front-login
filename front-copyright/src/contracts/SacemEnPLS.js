@@ -1,4 +1,4 @@
-export const CopyrightAddress = "0x50777a82d190c5AD9Ee5659075c7EC8f89eEb2DD";
+export const CopyrightAddress = "0xdE707a3a58DA90315Af314CbDe616294A18bf2aC";
 
 export const CopyrightAbi = [
 			{
@@ -121,19 +121,46 @@ export const CopyrightAbi = [
 			{
 				"inputs": [
 					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "contentHash",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "string",
+								"name": "content",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "author",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "url",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timeStamp",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct SacemEnPLS.CopyRight",
+						"name": "nft",
+						"type": "tuple"
+					},
+					{
 						"internalType": "address",
 						"name": "ownerAddress",
 						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "content",
-						"type": "string"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "contentHashed",
-						"type": "bytes32"
 					}
 				],
 				"name": "createCopyRight",
@@ -205,6 +232,21 @@ export const CopyrightAbi = [
 							{
 								"internalType": "string",
 								"name": "content",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "author",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "url",
 								"type": "string"
 							},
 							{
@@ -382,6 +424,49 @@ export const CopyrightAbi = [
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenByIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenOfOwnerByIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "tokenId",
 						"type": "uint256"
 					}
@@ -392,6 +477,19 @@ export const CopyrightAbi = [
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
