@@ -10,7 +10,7 @@ import { CircularProgress } from "@chakra-ui/react"
 import { Web3Context } from "web3-hooks";
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 
-const Transfer = ({id, setValue}) => {
+const Transfer = ({nft, value, setValue}) => {
   const [web3State] = useContext(Web3Context);
   const { token } = useToken()
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -47,7 +47,7 @@ const Transfer = ({id, setValue}) => {
   const handleSubmitButton = async (data) => {
     try {
       setLoading(true)
-      const tx = await CPR.transferFrom(web3State.account, data.transfer, id)
+      const tx = await CPR.transferFrom(web3State.account, data.transfer, nft.id)
       const network = web3State.networkName.toLowerCase()
       const link = `https://${network}.etherscan.io/tx/${tx.hash}`
       toast({
@@ -96,9 +96,9 @@ const Transfer = ({id, setValue}) => {
           />
           {errors.transfer && <AlertPop title={errors.transfer.message} />}
         <Center>
-          <Button onClick={() => setValue("transferFrom")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowLeftIcon /></Button>
-          <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Send"}</Button>
-          <Button onClick={() => setValue("approve")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowRightIcon /></Button>
+          <Button onClick={() => setValue(value - 1)} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowLeftIcon /></Button>
+          <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Send"}</Button>
+          <Button onClick={() => setValue(value + 1)} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowRightIcon /></Button>
         </Center>
         </form>
     </Container>

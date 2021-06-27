@@ -12,7 +12,7 @@ import { ethers } from "ethers";
 import { CircularProgress } from "@chakra-ui/react"
 import AlertPop from "./AlertPop";
 
-const TransfertFrom = ({id, setValue}) => {
+const TransfertFrom = ({id, value, setValue}) => {
   const { token } = useToken()
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [web3State] = useContext(Web3Context);
@@ -40,13 +40,12 @@ const TransfertFrom = ({id, setValue}) => {
   }
 
   const handleSubmitButton = async (data) => {
-    const amount = ethers.utils.parseEther(data.amountFrom)
     try {
       if(!ethers.utils.isAddress(allowance.address)){
         throw new Error("the sender must be a valide address")
       }
       setLoading(true)
-      const tx = await CPR.transferFrom(allowance.address, data.transferTo, amount)
+      const tx = await CPR.transferFrom(allowance.address, data.transferTo, id)
       const network = web3State.networkName.toLowerCase()
       const link = `https://${network}.etherscan.io/tx/${tx.hash}`
       toast({
@@ -97,9 +96,9 @@ const TransfertFrom = ({id, setValue}) => {
             })}/>
           {errors.transferTo && <AlertPop title={errors.transferTo.message} />}
           <Center>
-            <Button onClick={() => setValue("transferFrom")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowLeftIcon /></Button>
-            <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Send"}</Button>
-            <Button onClick={() => setValue("approve")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowRightIcon /></Button>
+            <Button onClick={() => setValue("transferFrom")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3} isDisabled><ArrowLeftIcon /></Button>
+            <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Transfer"}</Button>
+            <Button onClick={() => setValue(value + 1)} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowRightIcon /></Button>
           </Center>
         </form>
     </Container>

@@ -16,6 +16,7 @@ const Galery = () => {
       const totalSupply = await CPR.totalSupply()
       for(let i = 1; i <= totalSupply.toString(); i++ ) {
         let owner = await CPR.ownerOf(i)
+        let approved = await CPR.getApproved(i)
         if (owner.toLowerCase() === web3State.account) {
           const nft = await CPR.getCPRById(i)
           galeryOWned.push({
@@ -25,9 +26,20 @@ const Galery = () => {
             author: nft.author,
             url: nft.url,
             timeStamp: nft.timeStamp.toString(),
-            id: i
+            id: i,
           })
-        }
+        } else if (!approved.startsWith('0x000')) {
+          const nft = await CPR.getCPRById(i)
+          galeryOWned.push({
+            hash: nft.contentHash,
+            content: nft.content,
+            title: nft.title,
+            author: nft.author,
+            url: nft.url,
+            timeStamp: nft.timeStamp.toString(),
+            id: i,
+            isApprove: true
+        })}
       }
       setGalery(galeryOWned)
     }
@@ -43,7 +55,7 @@ const Galery = () => {
   return(
   <Container centerContent as="section" maxW="container.xl" py="10">
     <Heading mb="5">Your NFTs</Heading>
-    <SimpleGrid columns={[1, null, 3]} gap="8">
+    <SimpleGrid columns={[1, 1, 1, 2, 3]} gap="8">
       {galery.map((el, index) => {
         return <NFT key={index} nft={el}></NFT>
       })}

@@ -10,7 +10,7 @@ import { ethers } from "ethers";
 import AlertPop from "./AlertPop";
 import { CircularProgress } from "@chakra-ui/react"
 
-const Approval = ({id, setValue}) => {
+const Approval = ({nft, value, setValue}) => {
   const [web3State] = useContext(Web3Context)
   const { token } = useToken()
   const [loading, setLoading] = useState(false)
@@ -19,10 +19,9 @@ const Approval = ({id, setValue}) => {
   const CPR = useContext(CopyrightContext)
 
   const handleSubmitButton = async (data) => {
-    const amount = ethers.utils.parseEther(data.amountApprove)
     try {
       setLoading(true)
-      const tx = await CPR.approve(data.approveAddress, amount)
+      const tx = await CPR.approve(data.approveAddress, nft.id)
       const network = web3State.networkName.toLowerCase()
       const link = `https://${network}.etherscan.io/tx/${tx.hash}`
       toast({title: 'Confirmed transaction',
@@ -93,9 +92,9 @@ const Approval = ({id, setValue}) => {
           />
           {errors.approveAddress && <AlertPop title={errors.approveAddress.message} />}
             <Center>
-              <Button onClick={() => setValue("transferFrom")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowLeftIcon /></Button>
-              <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Send"}</Button>
-              <Button onClick={() => setValue("approve")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowRightIcon /></Button>
+              <Button onClick={() => setValue(value - 1)} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowLeftIcon /></Button>
+              <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "approve"}</Button>
+              <Button onClick={() => setValue("approve")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3} isDisabled><ArrowRightIcon /></Button>
             </Center>
          </form>
     </Container>
