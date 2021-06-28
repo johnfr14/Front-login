@@ -1,4 +1,4 @@
-import { Text, Box, Input, Button, Center, Spacer, Container, FormLabel } from "@chakra-ui/react";
+import { Text, Box, Input, Button, Center, Spacer, VStack, FormLabel } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { useToken } from "../context/TokenContext";
 import { useContext, useState, useEffect } from "react";
@@ -80,24 +80,24 @@ const Approval = ({nft, value, setValue}) => {
     }
   }, [CPR, toast, token, web3State.account])
   return (
-    <Container centerContent mt="-3rem" fontWeight="bold">
-      <Text align="center" fontSize="3xl">Approval</Text>
+    <VStack centerContent fontWeight="bold">
+      <Text align="center" fontSize="3xl" mb="10">Approval</Text>
         <form onSubmit={handleSubmit(handleSubmitButton)} id="first-name" m={2}>
           <FormLabel>To address</FormLabel>
-          <Input placeholder="Authorize this contract to spend your moula" mb={2} isRequired
+          <Input placeholder="Authorize this contract to spend your moula"  mb="5" isRequired
           {...register("approveAddress", {
                 minLength: { value: 42, message: "Please enter a valid address" },
                 maxLength: { value: 42, message: "Please enter a valid address" },
             })}
           />
           {errors.approveAddress && <AlertPop title={errors.approveAddress.message} />}
-            <Center>
-              <Button onClick={() => setValue(value - 1)} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowLeftIcon /></Button>
-              <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "approve"}</Button>
-              <Button onClick={() => setValue("approve")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3} isDisabled><ArrowRightIcon /></Button>
+            <Center mb="3.4rem">
+              <Button onClick={() => setValue(value - 1)} bg="gray.300" variant="solid" m={2} mb={3}><ArrowLeftIcon /></Button>
+              <Button type="submit" colorScheme="teal" variant="solid" size="lg" m={2} mb={3} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "approve"}</Button>
+              <Button onClick={() => setValue("approve")} bg="gray.300" variant="solid" m={2} mb={3} isDisabled><ArrowRightIcon /></Button>
             </Center>
          </form>
-    </Container>
+    </VStack>
   );
 };
 

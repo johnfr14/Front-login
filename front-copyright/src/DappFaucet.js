@@ -12,15 +12,15 @@ function DappFaucet() {
       <div>
         <Login />
         <main>
-          <Tabs isLazy>
 
-            <TabList>
-              <Tab borderWidth="4px" fontSize="2xl">
+          <Tabs align="center" variant="soft-rounded" colorScheme="teal" >
+            <TabList >
+              <Tab borderWidth="4px" m="1rem" fontSize="2xl">
                 CPR
               </Tab>
               
-              <Tab borderWidth="4px" fontSize="2xl">
-                Galery
+              <Tab borderWidth="4px" m="1rem" fontSize="2xl">
+                Gallery
               </Tab>
             </TabList>
 
@@ -32,8 +32,8 @@ function DappFaucet() {
                 <Galery />
               </TabPanel>
             </TabPanels>
-
             </Tabs>
+
         </main>
         <Footer />
       </div>

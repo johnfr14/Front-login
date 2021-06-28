@@ -1,4 +1,4 @@
-import { Text, Box, Input, Button, Spacer, Center, FormLabel, Container } from "@chakra-ui/react"
+import { Text, Box, Input, Button, Spacer, Center, FormLabel, VStack } from "@chakra-ui/react"
 import { useToken } from "../context/TokenContext";
 import { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -44,6 +44,7 @@ const Transfer = ({nft, value, setValue}) => {
     }
   }, [CPR, toast, token, web3State.account])
 
+
   const handleSubmitButton = async (data) => {
     try {
       setLoading(true)
@@ -84,9 +85,9 @@ const Transfer = ({nft, value, setValue}) => {
   }
 
   return (
-    <Container centerContent mt="-3rem" fontWeight="bold">
+    <VStack fontWeight="bold">
       <Text align="center" fontSize="3xl" mb="10">Transfer</Text>
-        <form onSubmit={handleSubmit(handleSubmitButton)} id="first-name" m={2}>
+        <form onSubmit={handleSubmit(handleSubmitButton)} id="first-name" m={2} >
           <FormLabel>To address</FormLabel>
           <Input placeholder="Receiver" mb="5" isRequired
           {...register("transfer", {
@@ -95,13 +96,13 @@ const Transfer = ({nft, value, setValue}) => {
           })}
           />
           {errors.transfer && <AlertPop title={errors.transfer.message} />}
-        <Center>
-          <Button onClick={() => setValue(value - 1)} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowLeftIcon /></Button>
-          <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Send"}</Button>
-          <Button onClick={() => setValue(value + 1)} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowRightIcon /></Button>
+        <Center mb="3.7rem">
+          <Button onClick={() => setValue(value - 1)} bg="gray.300" variant="solid" m={2} mb={3}><ArrowLeftIcon /></Button>
+          <Button type="submit" colorScheme="teal" size="lg" variant="solid" m={2} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Send"}</Button>
+          <Button onClick={() => setValue(value + 1)} bg="gray.300" variant="solid" m={2} mb={3}><ArrowRightIcon /></Button>
         </Center>
         </form>
-    </Container>
+    </VStack>
   )
 }
 

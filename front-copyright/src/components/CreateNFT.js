@@ -26,7 +26,6 @@ const CreateNFT = ({ value, setValue }) => {
   const toast = useToast()
   const [loading, setLoading] = useState(false)
 
-
     const handleCreateNFT = async () => {
     const content = value.content.trim().split("").filter(el => !['!','?','.',';',':','/',','].includes(el)).join('').split('  ').join('').toLowerCase()
     const contentHashed = await ethers.utils.id(content)
@@ -36,7 +35,7 @@ const CreateNFT = ({ value, setValue }) => {
       title: value.title,
       author: value.author,
       url: value.url,
-      timeStamp: 0 
+      timeStamp: new Date().toDateString()
     }
     setLoading(true)
     try {

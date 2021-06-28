@@ -1,4 +1,4 @@
-import { Text, Box, Input, Button, Spacer, Container, Center } from "@chakra-ui/react";
+import { Text, Box, Input, Button, Spacer, VStack, Center } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { FormLabel } from "@chakra-ui/react";
 import { Badge } from "@chakra-ui/react"
@@ -83,8 +83,8 @@ const TransfertFrom = ({id, value, setValue}) => {
 
 
   return (
-    <Container centerContent mt="-3rem" fontWeight="bold">
-      <Text align="center" fontSize="3xl">TransferFrom</Text>
+    <VStack centerContent fontWeight="bold">
+      <Text align="center" mb="1rem" fontSize="3xl">TransferFrom</Text>
         <form onSubmit={handleSubmit(handleSubmitButton)} variant="outline" w="75%" m={2} id="first-name" isRequired>
           <FormLabel>From</FormLabel>
           <Input value={allowance.address} onChange={handleSender} placeholder="Sender" isRequired  />
@@ -95,13 +95,13 @@ const TransfertFrom = ({id, value, setValue}) => {
                 maxLength: { value: 42, message: "Please enter a valid address" },
             })}/>
           {errors.transferTo && <AlertPop title={errors.transferTo.message} />}
-          <Center>
-            <Button onClick={() => setValue("transferFrom")} colorScheme="teal" variant="solid" w="50%" m={2} mb={3} isDisabled><ArrowLeftIcon /></Button>
-            <Button type="submit" colorScheme="teal" variant="solid" w="50%" m={2} mb={3} disabled={loading}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Transfer"}</Button>
-            <Button onClick={() => setValue(value + 1)} colorScheme="teal" variant="solid" w="50%" m={2} mb={3}><ArrowRightIcon /></Button>
+          <Center mb="1.45rem">
+            <Button onClick={() => setValue("transferFrom")} bg="gray.300" variant="solid" m={2} mb={3} isDisabled><ArrowLeftIcon /></Button>
+            <Button type="submit" colorScheme="teal" variant="solid" size="lg" m={2} mb={3} disabled={loading}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Transfer"}</Button>
+            <Button onClick={() => setValue(value + 1)} bg="gray.300" variant="solid" m={2} mb={3}><ArrowRightIcon /></Button>
           </Center>
         </form>
-    </Container>
+    </VStack>
   );
 };
 

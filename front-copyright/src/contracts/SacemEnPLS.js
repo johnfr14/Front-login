@@ -1,4 +1,4 @@
-export const CopyrightAddress = "0xdE707a3a58DA90315Af314CbDe616294A18bf2aC";
+export const CopyrightAddress = "0x473701F0cB5B4A250948BB8FEc336a8D6eb8Ea07";
 
 export const CopyrightAbi = [
 			{
@@ -148,9 +148,9 @@ export const CopyrightAbi = [
 								"type": "string"
 							},
 							{
-								"internalType": "uint256",
+								"internalType": "string",
 								"name": "timeStamp",
-								"type": "uint256"
+								"type": "string"
 							}
 						],
 						"internalType": "struct SacemEnPLS.CopyRight",
@@ -250,9 +250,9 @@ export const CopyrightAbi = [
 								"type": "string"
 							},
 							{
-								"internalType": "uint256",
+								"internalType": "string",
 								"name": "timeStamp",
-								"type": "uint256"
+								"type": "string"
 							}
 						],
 						"internalType": "struct SacemEnPLS.CopyRight",
