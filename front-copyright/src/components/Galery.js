@@ -10,48 +10,49 @@ const Galery = () => {
   const [web3State] = useContext(Web3Context);
  
   useEffect(() => {
-
-    const getNFT = async () => {
-      const galeryOWned = []
-      const totalSupply = await CPR.totalSupply()
-      const name = await CPR.name()
-      for(let i = 1; i <= totalSupply.toString(); i++ ) {
-        let owner = await CPR.ownerOf(i)
-        let approved = await CPR.getApproved(i)
-        if (owner.toLowerCase() === web3State.account) {
-          const nft = await CPR.getCPRById(i)
-          console.log(nft.timeStamp.toString())
-          galeryOWned.push({
-            name: name,
-            hash: nft.contentHash,
-            content: nft.content,
-            title: nft.title,
-            author: nft.author,
-            url: nft.url,
-            timeStamp: nft.timeStamp.toString(),
-            id: i,
-          })
-        } else if (!approved.startsWith('0x000')) {
-          const nft = await CPR.getCPRById(i)
-          galeryOWned.push({
-            name: name,
-            hash: nft.contentHash,
-            content: nft.content,
-            title: nft.title,
-            author: nft.author,
-            url: nft.url,
-            timeStamp: nft.timeStamp.toString(),
-            id: i,
-            isApprove: true
-        })}
+    if(web3State.chainId === 4) {
+      const getNFT = async () => {
+        const galeryOWned = []
+        const totalSupply = await CPR.totalSupply()
+        const name = await CPR.name()
+        for(let i = 1; i <= totalSupply.toString(); i++ ) {
+          let owner = await CPR.ownerOf(i)
+          let approved = await CPR.getApproved(i)
+          if (owner.toLowerCase() === web3State.account) {
+            const nft = await CPR.getCPRById(i)
+            console.log(nft.timeStamp.toString())
+            galeryOWned.push({
+              name: name,
+              hash: nft.contentHash,
+              content: nft.content,
+              title: nft.title,
+              author: nft.author,
+              url: nft.url,
+              timeStamp: nft.timeStamp.toString(),
+              id: i,
+            })
+          } else if (!approved.startsWith('0x000')) {
+            const nft = await CPR.getCPRById(i)
+            galeryOWned.push({
+              name: name,
+              hash: nft.contentHash,
+              content: nft.content,
+              title: nft.title,
+              author: nft.author,
+              url: nft.url,
+              timeStamp: nft.timeStamp.toString(),
+              id: i,
+              isApprove: true
+          })}
+        }
+        setGalery(galeryOWned)
       }
-      setGalery(galeryOWned)
-    }
 
-    try {
-      getNFT()
-    } catch (e) {
-      console.log(e)
+      try {
+        getNFT()
+      } catch (e) {
+        console.log(e)
+      }
     }
   }, [CPR, web3State.account])
 
