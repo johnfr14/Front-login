@@ -31,8 +31,8 @@ You can view all the information about him and even send/approve/transfer other'
 For a local use just copy paste it into your terminal.
 
 ```
-git clone https://github.com/johnfr14/red-team-frontFaucet.git
-cd red-team-frontFaucet
+git clone https://github.com/johnfr14/Copyright-NFT.git
+cd Copyright-NFT/front-copyright
 yarn
 yarn start
 ```
