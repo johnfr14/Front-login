@@ -4,18 +4,27 @@
 
 In that website you'll be able to ask for some faucet tokens to enjoy the functianility (that you can see below) in the tab : `Functionality RBT` by interacting with the blockchain Yeah !
 
-network: Rinkeby  
-ERC 20 contract : https://rinkeby.etherscan.io/address/0x3ba7084e8e7848fD6483d5b48506Ff2190E11979  
-Faucet contract : https://rinkeby.etherscan.io/address/0xa4b69F445869B0f0F9f394572127aAd7081d840d  
+NFT contract : https://rinkeby.etherscan.io/address/0x473701F0cB5B4A250948BB8FEc336a8D6eb8Ea07  
 
-## RBT Functioonality
+network: Rinkeby 
 
-Once you have claimed some RBT tokens in the main tab, go to the next one calle `Functionality RBT` you 'll be able to :
-- **check Balance** : Allow you to check the $RBT tokens balance of anyone, just put a valid address.
-- **check Allowance** : Allow you to check how much the sender is allowed to transfer from another address.
-- **Transfer** : Make you able to transfer yours $RBT tokens to someone else.
-- **Approval** : You can allow someone else to spend a certain amount of yours $RBT tokens.
-- **TransferFrom** : Allow you to transfer tokens to a certain address to another (depending how much the owner has approved you to spend)
+
+## Create your NFT 
+
+In the main tab `CPR` you can create your own NFT!
+
+this NFT will have severals characteristics listed below:
+- **Content** : The main value is the text that you will wrote inside, once the NFT generated nobody will be able to reproduce it, he is unique !
+- **Hash content** : A hash will be created from your text to guarantee its uniqueness .
+- **Title** : The title of the NFT.
+- **Author** : Who wrote it.
+- **url** : A url can be given (optional) to add features such pictures or others stuff.
+- **Timestamp** : The schedule of his creation will be printed in the NFT.
+
+## Gallery
+
+A gallery has been specialy made to enjoy your new fresh baked NFT 😎.
+You can view all the information about him and even send/approve/transfer other's NFT.
 
 ## installation
 
