@@ -23,7 +23,7 @@ this NFT will have severals characteristics listed below:
 
 ## Gallery
 
-A gallery has been specialy made to enjoy your new fresh baked NFT 😎.
+A gallery has been specialy made to enjoy your new fresh baked NFT 😎.  
 You can view all the information about him and even send/approve/transfer other's NFT.
 
 ## installation
