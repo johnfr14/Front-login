@@ -17,7 +17,7 @@ contract SacemEnPLS is ERC721Enumerable, ERC721URIStorage {
         string title;
         string author;
         string url;
-        uint256 timeStamp;
+        string timeStamp;
     }
 
     mapping(uint256 => CopyRight) private _cprContent;
@@ -31,7 +31,6 @@ contract SacemEnPLS is ERC721Enumerable, ERC721URIStorage {
         
         uint256 newItemId = _tokenIds.current();
         _mint(ownerAddress, newItemId);
-        nft.timeStamp = block.timestamp;
         _cprContent[newItemId] = nft;
         _cprId[nft.contentHash] = newItemId;
 
