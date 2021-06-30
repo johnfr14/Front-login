@@ -5,9 +5,11 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Address.sol";
 
 contract SacemEnPLS is ERC721Enumerable, ERC721URIStorage {
     using Counters for Counters.Counter;
+    using Address for address payable;
 
     Counters.Counter private _tokenIds;
 
@@ -21,7 +23,9 @@ contract SacemEnPLS is ERC721Enumerable, ERC721URIStorage {
     }
 
     mapping(uint256 => CopyRight) private _cprContent;
+    mapping(uint256 => bool) private _isListed;
     mapping(bytes32 => uint256) private _cprId;
+    mapping(uint256 => uint256) private _price;
 
     constructor() ERC721("Copyright", "CPR") {}
 
@@ -36,6 +40,11 @@ contract SacemEnPLS is ERC721Enumerable, ERC721URIStorage {
 
         return newItemId;
     }
+    
+    function listNFT(address marketPlace, uint256 id, uint256 price_) public {
+        approve(marketPlace, id);
+        _price[id] = price_;
+    }
 
     function getCPRById(uint256 id) public view returns (CopyRight memory) {
         return _cprContent[id];
@@ -45,10 +54,14 @@ contract SacemEnPLS is ERC721Enumerable, ERC721URIStorage {
         return _cprId[contentHashed];
     }
     
+    function getPrice(uint256 id) public view returns (uint256) {
+        return (_price[id]);
+    }
 
     function tokenURI(uint256 tokenId) public view virtual override(ERC721URIStorage, ERC721) returns (string memory) {
         return super.tokenURI(tokenId);
     }
+
 
     // Modifions _baseURI afin de retourner l'url de base
     // Cette fonction est utilisée par tokenURI pour retourner une url complète.

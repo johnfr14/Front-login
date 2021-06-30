@@ -17,16 +17,15 @@ const MakeCopyright = () => {
   return (
   <Container centerContent="true" maxW="75%" id="NFT">
       <Heading pb="10">CREATE A COPYRIGHT NFT !</Heading>
-      <Textarea 
-        value={value.content}
-        onChange={handleInputChange}
-        placeholder="Here is a sample placeholder"
-        size="lg"
-        type="flushed"
-        isRequired="true"
-        height="50vh"
-      />
-      <CreateNFT value={value} setValue={setValue} />
+        <Textarea 
+          value={value.content}
+          onChange={handleInputChange}
+          placeholder="Here is a sample placeholder"
+          size="lg"
+          type="flushed"
+          height="50vh"
+        />
+        <CreateNFT value={value} setValue={setValue} />
   </Container>
   )
 }

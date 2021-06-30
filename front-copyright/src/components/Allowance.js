@@ -15,7 +15,7 @@ const Allowance = () => {
     formState: { errors },
   } = useForm();
   const toast = useToast();
-  const CPR = useContext(CopyrightContext);
+  const {CPR} = useContext(CopyrightContext);
 
   const handleCheckAllowance = async (data) => {
     try {

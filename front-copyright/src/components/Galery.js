@@ -6,7 +6,7 @@ import { Web3Context } from "web3-hooks";
 
 const Galery = () => {
   let [galery, setGalery] = useState([])
-  const CPR = useContext(CopyrightContext)
+  const {CPR} = useContext(CopyrightContext)
   const [web3State] = useContext(Web3Context);
  
   useEffect(() => {
@@ -20,7 +20,6 @@ const Galery = () => {
           let approved = await CPR.getApproved(i)
           if (owner.toLowerCase() === web3State.account) {
             const nft = await CPR.getCPRById(i)
-            console.log(nft.timeStamp.toString())
             galeryOWned.push({
               name: name,
               hash: nft.contentHash,
@@ -31,7 +30,7 @@ const Galery = () => {
               timeStamp: nft.timeStamp.toString(),
               id: i,
             })
-          } else if (!approved.startsWith('0x000')) {
+          } else if (approved === web3State.account) {
             const nft = await CPR.getCPRById(i)
             galeryOWned.push({
               name: name,
@@ -54,11 +53,11 @@ const Galery = () => {
         console.log(e)
       }
     }
-  }, [CPR, web3State.account])
+  }, [CPR, web3State])
 
 
   return(
-    <Container centerContent as="section" maxW="container.xl" py="10">
+    <Container centerContent maxW="container.xl" py="10">
       <Heading mb="5">Your NFTs</Heading>
       <SimpleGrid columns={[1, 1, 1, 2, 3]} gap="8">
         {galery.map((el, index) => {

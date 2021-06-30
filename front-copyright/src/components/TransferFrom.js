@@ -19,7 +19,7 @@ const TransfertFrom = ({id, value, setValue}) => {
   const [loading, setLoading] = useState(false)
   const [allowance, setallowance] = useState({address: "", amount: 0, isAddress: false})
   const toast = useToast()
-  const CPR = useContext(CopyrightContext)
+  const {CPR} = useContext(CopyrightContext)
 
   const handleSender = async (e) => {
     setallowance({address: e.target.value, amount: 0, isAddress: false})
@@ -83,9 +83,9 @@ const TransfertFrom = ({id, value, setValue}) => {
 
 
   return (
-    <VStack centerContent fontWeight="bold">
+    <VStack fontWeight="bold">
       <Text align="center" mb="1rem" fontSize="3xl">TransferFrom</Text>
-        <form onSubmit={handleSubmit(handleSubmitButton)} variant="outline" w="75%" m={2} id="first-name" isRequired>
+        <form onSubmit={handleSubmit(handleSubmitButton)} variant="outline" w="75%" m={2} isRequired>
           <FormLabel>From</FormLabel>
           <Input value={allowance.address} onChange={handleSender} placeholder="Sender" isRequired  />
           {allowance.isAddress &&  <>{ allowance.amount > 0 ? <Badge colorScheme="green">Your are allowed to send {allowance.amount} {token.symbol} from this account</Badge> : <Badge colorScheme="red">You have no allowance on this address</Badge>}</> }

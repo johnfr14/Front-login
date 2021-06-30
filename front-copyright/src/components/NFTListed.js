@@ -1,13 +1,9 @@
 import { Center, Container, Circle} from "@chakra-ui/react"
 import { Tabs, TabList, TabPanels, Tab, TabPanel} from "@chakra-ui/react"
-import { useState } from "react"
-import Tab1 from "./Tab1"
-import Tab2 from "./Tab2"
+import Tab2Listed from "./Tab2Listed"
 import Tab3 from "./Tab3"
-import Listing from "./Listing"
 
-const NFT = ({nft}) => {
-  const [tabIndex, setTabIndex] = useState(1)
+const NFTListed = ({nft}) => {
   
   return (
   <Container backgroundColor="purple.400" borderRadius="3rem" height="30rem" width="24rem" >
@@ -15,31 +11,22 @@ const NFT = ({nft}) => {
       {nft.id}
     </Circle>
 
-    <Tabs index={tabIndex} onChange={(index) => setTabIndex(index)} variant="soft-rounded" colorScheme="green" defaultIndex={1}>
+    <Tabs variant="soft-rounded" colorScheme="green" defaultIndex={1}>
         <TabPanels>
-          <TabPanel aria-labelledby="1">
-            <Tab1 nft={nft}/>
-          </TabPanel>
 
           <TabPanel >
-            <Tab2 setTabIndex={setTabIndex} nft={nft}/>
+            <Tab2Listed nft={nft}/>
           </TabPanel>
 
-          <TabPanel aria-labelledby="2" pb="0">
+          <TabPanel aria-labelledby="2" mt="2.5rem">
             <Tab3 nft={nft} />
-          </TabPanel>
-
-          <TabPanel aria-labelledby="3" pb="0">
-            <Listing nft={nft} />
           </TabPanel>
 
         </TabPanels>
         <Center>
-          <TabList mt="10" mb="5">
+          <TabList mb="5" >
             <Tab>Tab 1</Tab>
-            <Tab>Tab 2</Tab>
             <Tab>info</Tab>
-            <Tab>Listing</Tab>
           </TabList>
         </Center>
     </Tabs>
@@ -49,4 +36,4 @@ const NFT = ({nft}) => {
 
 }
 
-export default NFT
+export default NFTListed

@@ -1,5 +1,4 @@
 import { Text, Box, Input, Button, Center, Spacer, VStack, FormLabel } from "@chakra-ui/react";
-import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { useToken } from "../context/TokenContext";
 import { useContext, useState, useEffect } from "react";
 import { Web3Context } from "web3-hooks"
@@ -7,21 +6,22 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react"
 import { CopyrightContext } from "../App"
 import { ethers } from "ethers";
-import AlertPop from "./AlertPop";
 import { CircularProgress } from "@chakra-ui/react"
+import { MarketPlaceAddress } from "../contracts/MarketPlacCPR";
 
-const Approval = ({nft, value, setValue}) => {
+const Listing = ({nft}) => {
   const [web3State] = useContext(Web3Context)
   const { token } = useToken()
   const [loading, setLoading] = useState(false)
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { handleSubmit } = useForm();
   const toast = useToast()
   const {CPR} = useContext(CopyrightContext)
+  const [value, setValue] = useState()
 
-  const handleSubmitButton = async (data) => {
+  const handleSubmitButton = async () => {
     try {
       setLoading(true)
-      const tx = await CPR.approve(data.approveAddress, nft.id)
+      const tx = await CPR.listNFT(MarketPlaceAddress, nft.id, ethers.utils.parseEther(value))
       const network = web3State.networkName.toLowerCase()
       const link = `https://${network}.etherscan.io/tx/${tx.hash}`
       toast({title: 'Confirmed transaction',
@@ -36,7 +36,7 @@ const Approval = ({nft, value, setValue}) => {
     } catch (e) {
       toast({
           title: 'Error',
-          description: `${e.error.message}`,
+          description: `${e.message}`,
           status: 'error',
           duration: 5000,
           isClosable: true,
@@ -81,24 +81,16 @@ const Approval = ({nft, value, setValue}) => {
   }, [CPR, toast, token, web3State.account])
   return (
     <VStack fontWeight="bold">
-      <Text align="center" fontSize="3xl" mb="10">Approval</Text>
+      <Text align="center" fontSize="3xl" mb="10">Listing</Text>
         <form onSubmit={handleSubmit(handleSubmitButton)} m={2}>
-          <FormLabel>To address</FormLabel>
-          <Input placeholder="Authorize this contract to spend your moula"  mb="5" isRequired
-          {...register("approveAddress", {
-                minLength: { value: 42, message: "Please enter a valid address" },
-                maxLength: { value: 42, message: "Please enter a valid address" },
-            })}
-          />
-          {errors.approveAddress && <AlertPop title={errors.approveAddress.message} />}
-            <Center mb="3.4rem">
-              <Button onClick={() => setValue(value - 1)} bg="gray.300" variant="solid" m={2} mb={3}><ArrowLeftIcon /></Button>
-              <Button type="submit" colorScheme="teal" variant="solid" size="lg" m={2} mb={3} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "approve"}</Button>
-              <Button onClick={() => setValue("approve")} bg="gray.300" variant="solid" m={2} mb={3} isDisabled><ArrowRightIcon /></Button>
+          <FormLabel>Price</FormLabel>
+          <Input onChange={(e) => setValue(e.target.value)} placeholder="Amount in ETH"  mb="5" isRequired/>
+            <Center mb="4.45rem">
+              <Button type="submit" colorScheme="teal" variant="solid" size="lg" m={2} mb={3} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : `${value ? "List for " + value + " ETH" : "List"}`}</Button>
             </Center>
          </form>
     </VStack>
   );
 };
 
-export default Approval;
+export default Listing;

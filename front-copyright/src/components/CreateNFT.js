@@ -21,7 +21,7 @@ import { ethers } from "ethers";
 
 const CreateNFT = ({ value, setValue }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const CPR = useContext(CopyrightContext)
+  const {CPR} = useContext(CopyrightContext)
   const [web3State] = useContext(Web3Context);
   const toast = useToast()
   const [loading, setLoading] = useState(false)
@@ -80,7 +80,10 @@ const CreateNFT = ({ value, setValue }) => {
         colorScheme="teal"
         variant="solid"
         size="lg"
-        mt="5" >Create it !</Button>
+        mt="5"
+        isDisabled={!value}
+      >Create it !</Button>
+        
 
       <Modal
         isCentered

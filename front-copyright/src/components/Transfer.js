@@ -16,7 +16,7 @@ const Transfer = ({nft, value, setValue}) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false)
   const toast = useToast()
-  const CPR = useContext(CopyrightContext)
+  const {CPR} = useContext(CopyrightContext)
 
    useEffect(() => {
     // si simpleStorage est pas null alors
@@ -87,7 +87,7 @@ const Transfer = ({nft, value, setValue}) => {
   return (
     <VStack fontWeight="bold">
       <Text align="center" fontSize="3xl" mb="10">Transfer</Text>
-        <form onSubmit={handleSubmit(handleSubmitButton)} id="first-name" m={2} >
+        <form onSubmit={handleSubmit(handleSubmitButton)} m={2} >
           <FormLabel>To address</FormLabel>
           <Input placeholder="Receiver" mb="5" isRequired
           {...register("transfer", {

@@ -1,4 +1,4 @@
-import { Center, Heading, SimpleGrid, Button, Text, Spacer, Box } from "@chakra-ui/react"
+import { Center, Heading, SimpleGrid, Button, Text, Spacer } from "@chakra-ui/react"
 import {
   Popover,
   PopoverTrigger,
@@ -10,7 +10,7 @@ import {
 
 const Tab3 = ({ nft }) => {
   return (
-    <Box>
+    <>
       <Center mt="-4">
         <Heading as="h1" size="lg">{nft.title}</Heading>
       </Center>
@@ -31,7 +31,6 @@ const Tab3 = ({ nft }) => {
         <Center>
           <Text fontWeight="bold">Hash</Text>
           <Spacer />
-          <Text >
             <Popover>
               <PopoverTrigger>
                 <Button>Click</Button>
@@ -42,7 +41,6 @@ const Tab3 = ({ nft }) => {
                 <PopoverBody>{nft.hash}</PopoverBody>
               </PopoverContent>
             </Popover>
-          </Text>
         </Center>
         
         <Center>
@@ -60,7 +58,6 @@ const Tab3 = ({ nft }) => {
         <Center>
           <Text fontWeight="bold">Image url</Text>
           <Spacer />
-          <Text>
             <Popover>
               <PopoverTrigger>
                 <Button>Click</Button>
@@ -71,7 +68,6 @@ const Tab3 = ({ nft }) => {
                 <PopoverBody>{nft.url}</PopoverBody>
               </PopoverContent>
             </Popover>
-          </Text>
         </Center>
         
         <Center>
@@ -81,7 +77,7 @@ const Tab3 = ({ nft }) => {
         </Center>
           
       </SimpleGrid>
-    </Box>
+    </>
   )
 }
 

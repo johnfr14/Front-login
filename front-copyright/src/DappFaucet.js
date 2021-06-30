@@ -2,6 +2,7 @@ import Login from "./components/Login";
 import Footer from "./components/Footer";
 import MakeCopyright from "./components/MakeCopyright";
 import Galery from "./components/Galery";
+import MarketPlace from "./components/MarketPlace";
 import { TokenContextProvider } from "./context/TokenContext";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
@@ -22,6 +23,10 @@ function DappFaucet() {
               <Tab borderWidth="4px" m="1rem" fontSize="2xl">
                 Gallery
               </Tab>
+
+              <Tab borderWidth="4px" m="1rem" fontSize="2xl">
+                MarketPlace
+              </Tab>
             </TabList>
 
             <TabPanels>
@@ -30,6 +35,9 @@ function DappFaucet() {
               </TabPanel>
               <TabPanel>
                 <Galery />
+              </TabPanel>
+              <TabPanel>
+                <MarketPlace />
               </TabPanel>
             </TabPanels>
             </Tabs>

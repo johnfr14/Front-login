@@ -17,7 +17,7 @@ function ContentModal({content}) {
 
   return (
     <>
-      <Button mt={3} ref={btnRef} onClick={onOpen}>
+      <Button ref={btnRef} onClick={onOpen}>
         View content
       </Button>
 

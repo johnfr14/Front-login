@@ -1,8 +1,9 @@
-import { Center, Heading, Image, Container, VStack} from "@chakra-ui/react"
+import { Center, Heading, Image, Container, Button, VStack, HStack} from "@chakra-ui/react"
 import ContentModal from "./contentModal"
 
 
-const Tab2 = ({nft}) => {
+const Tab2 = ({setTabIndex, nft}) => {
+
 return(
 <Container>
   <VStack spacing="20px">
@@ -21,7 +22,10 @@ return(
     </Center>
 
     <Center>
-      <ContentModal content={nft.content}/>
+      <HStack mt="3">
+        <ContentModal content={nft.content}/>
+        <Button onClick={() => setTabIndex(3)} colorScheme="orange">List on Market</Button>
+      </HStack>
     </Center>
     
   </VStack>

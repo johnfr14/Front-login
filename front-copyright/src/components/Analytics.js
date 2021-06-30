@@ -11,7 +11,7 @@ import AlertPop from "./AlertPop";
 const Analytics = () => {
   const { token, balance, dispatch } = useToken();
   const {register,handleSubmit,formState: { errors }} = useForm();
-  const CPR = useContext(CopyrightContext);
+  const {CPR} = useContext(CopyrightContext);
 
   
 
