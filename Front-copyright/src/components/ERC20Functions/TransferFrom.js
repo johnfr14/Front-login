@@ -41,11 +41,8 @@ const TransfertFrom = ({id, value, setValue}) => {
 
   const handleSubmitButton = async (data) => {
     try {
-      if(!ethers.utils.isAddress(allowance.address)){
-        throw new Error("the sender must be a valide address")
-      }
       setLoading(true)
-      const tx = await CPR.transferFrom(allowance.address, data.transferTo, id)
+      const tx = await CPR.transferFrom(data.transferFrom, data.transferTo, id)
       const network = web3State.networkName.toLowerCase()
       const link = `https://${network}.etherscan.io/tx/${tx.hash}`
       toast({
@@ -87,7 +84,10 @@ const TransfertFrom = ({id, value, setValue}) => {
       <Text align="center" mb="1rem" fontSize="3xl">TransferFrom</Text>
         <form onSubmit={handleSubmit(handleSubmitButton)} variant="outline" w="75%" m={2} isRequired>
           <FormLabel>From</FormLabel>
-          <Input value={allowance.address} onChange={handleSender} placeholder="Sender" isRequired  />
+          <Input mb={1} variant="outline" placeholder="Sender" isRequired {...register("transferFrom", {
+                minLength: { value: 42, message: "Please enter a valid address" },
+                maxLength: { value: 42, message: "Please enter a valid address" },
+            })}/>
           {allowance.isAddress &&  <>{ allowance.amount > 0 ? <Badge colorScheme="green">Your are allowed to send {allowance.amount} {token.symbol} from this account</Badge> : <Badge colorScheme="red">You have no allowance on this address</Badge>}</> }
           <FormLabel>To</FormLabel>
           <Input mb={1} variant="outline" placeholder="Receiver" isRequired {...register("transferTo", {
