@@ -1,5 +1,5 @@
 import { Center, Heading, Image, Container, Button, VStack, HStack} from "@chakra-ui/react"
-import ContentModal from "./contentModal"
+import ContentModal from "../1.Create/contentModal"
 
 
 const Tab2 = ({setTabIndex, nft}) => {

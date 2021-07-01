@@ -1,13 +1,13 @@
 import { Text, Box, Input, Button, Center, Spacer, VStack, FormLabel } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
-import { useToken } from "../context/TokenContext";
+import { useToken } from "../../context/TokenContext";
 import { useContext, useState, useEffect } from "react";
 import { Web3Context } from "web3-hooks"
 import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react"
-import { CopyrightContext } from "../App"
+import { CopyrightContext } from "../../App"
 import { ethers } from "ethers";
-import AlertPop from "./0.Gallery/AlertPop";
+import AlertPop from "../0.Body/1.Gallery/AlertPop";
 import { CircularProgress } from "@chakra-ui/react"
 
 const Approval = ({nft, value, setValue}) => {

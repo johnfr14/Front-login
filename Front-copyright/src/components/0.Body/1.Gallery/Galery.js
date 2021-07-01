@@ -1,6 +1,6 @@
 import NFT from "./NFT"
 import {Container, SimpleGrid, Heading} from "@chakra-ui/react"
-import { CopyrightContext } from "../App"
+import { CopyrightContext } from "../../../App"
 import { useState, useEffect, useContext } from "react"
 import { Web3Context } from "web3-hooks";
 
@@ -30,7 +30,7 @@ const Galery = () => {
               timeStamp: nft.timeStamp.toString(),
               id: i,
             })
-          } else if (approved === web3State.account) {
+          } else if (approved.toLowerCase() === web3State.account) {
             const nft = await CPR.getCPRById(i)
             galeryOWned.push({
               name: name,

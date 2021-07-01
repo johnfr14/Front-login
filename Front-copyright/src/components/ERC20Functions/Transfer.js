@@ -1,11 +1,11 @@
 import { Text, Box, Input, Button, Spacer, Center, FormLabel, VStack } from "@chakra-ui/react"
-import { useToken } from "../context/TokenContext";
+import { useToken } from "../../context/TokenContext"
 import { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react"
-import { CopyrightContext } from "../App"
+import { CopyrightContext } from "../../App"
 import { ethers } from "ethers";
-import AlertPop from "./0.Gallery/AlertPop";
+import AlertPop from "../../components/0.Body/1.Gallery/AlertPop";
 import { CircularProgress } from "@chakra-ui/react"
 import { Web3Context } from "web3-hooks";
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'

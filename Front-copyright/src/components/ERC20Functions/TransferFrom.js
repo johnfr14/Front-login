@@ -2,15 +2,15 @@ import { Text, Box, Input, Button, Spacer, VStack, Center } from "@chakra-ui/rea
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { FormLabel } from "@chakra-ui/react";
 import { Badge } from "@chakra-ui/react"
-import { useToken } from "../context/TokenContext";
+import { useToken } from "../../context/TokenContext";
 import { Web3Context } from "web3-hooks";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react"
-import { CopyrightContext } from "../App"
+import { CopyrightContext } from "../../App"
 import { ethers } from "ethers";
 import { CircularProgress } from "@chakra-ui/react"
-import AlertPop from "./0.Gallery/AlertPop";
+import AlertPop from "../0.Body/1.Gallery/AlertPop";
 
 const TransfertFrom = ({id, value, setValue}) => {
   const { token } = useToken()

@@ -1,4 +1,3 @@
-import "./App.css";
 import React from "react";
 import DappFaucet from "./DappFaucet";
 import { useContract } from "web3-hooks";
