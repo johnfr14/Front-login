@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react"
 import { useState } from "react"
-import Transfer from "./Transfer"
+import Transfer from "../Transfer"
 import Approval from "./Approval"
-import TransfertFrom from "./TransferFrom"
+import TransfertFrom from "../TransferFrom"
 
 const Tab1 = ({nft}) => {
   const [value, setValue] = useState(2)

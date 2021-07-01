@@ -1,13 +1,13 @@
 import { Text, Box, Input, Button, Center, Spacer, VStack, FormLabel } from "@chakra-ui/react";
-import { useToken } from "../context/TokenContext";
+import { useToken } from "../../../context/TokenContext";
 import { useContext, useState, useEffect } from "react";
 import { Web3Context } from "web3-hooks"
 import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react"
-import { CopyrightContext } from "../App"
+import { CopyrightContext } from "../../../App"
 import { ethers } from "ethers";
 import { CircularProgress } from "@chakra-ui/react"
-import { MarketPlaceAddress } from "../contracts/MarketPlacCPR";
+import { MarketPlaceAddress } from "../../../contracts/MarketPlacCPR";
 
 const Listing = ({nft}) => {
   const [web3State] = useContext(Web3Context)

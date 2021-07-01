@@ -1,8 +1,8 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import Analytics from "./Analytics";
-import Transfer from "./Transfer";
+import Transfer from "../Transfer";
 import Approval from "./Approval";
-import TransferFrom from "./TransferFrom";
+import TransferFrom from "../TransferFrom";
 
 const CopyrightFunc = () => {
   

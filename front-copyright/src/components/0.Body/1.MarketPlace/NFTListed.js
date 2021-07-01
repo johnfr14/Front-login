@@ -2,7 +2,7 @@ import { Center, Container, Circle} from "@chakra-ui/react"
 import { Tabs, TabList, TabPanels, Tab, TabPanel} from "@chakra-ui/react"
 import { useState } from "react"
 import Tab2Listed from "./Tab2Listed"
-import Tab3 from "./Tab3"
+import Tab3 from "../1.Gallery/Tab3"
 
 const NFTListed = ({nft}) => {
   const [tabIndex, setTabIndex] = useState(0)

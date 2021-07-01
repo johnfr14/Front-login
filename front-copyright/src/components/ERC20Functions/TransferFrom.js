@@ -10,7 +10,7 @@ import { useToast } from "@chakra-ui/react"
 import { CopyrightContext } from "../App"
 import { ethers } from "ethers";
 import { CircularProgress } from "@chakra-ui/react"
-import AlertPop from "./AlertPop";
+import AlertPop from "./0.Gallery/AlertPop";
 
 const TransfertFrom = ({id, value, setValue}) => {
   const { token } = useToken()

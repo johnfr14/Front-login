@@ -2,8 +2,8 @@ import { Text, Input, Button, VStack } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { ethers } from "ethers";
-import { useToken } from "../context/TokenContext";
-import { CopyrightContext } from "../App";
+import { useToken } from "../../context/TokenContext";
+import { CopyrightContext } from "../../App";
 import { useContext } from "react";
 import AlertPop from "./AlertPop"
 

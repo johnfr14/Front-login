@@ -1,8 +1,8 @@
 import { Text, Divider, Box, Input, Button, Spacer } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { ethers } from "ethers";
-import { useToken } from "../context/TokenContext";
-import { CopyrightContext } from "../App";
+import { useToken } from "../../context/TokenContext";
+import { CopyrightContext } from "../../App";
 import { useContext } from "react";
 import Allowance from "./Allowance";
 import AlertPop from "./AlertPop";

@@ -1,7 +1,7 @@
 import { Center, Heading, Image, Container, Button, VStack, HStack, Box, CloseButton} from "@chakra-ui/react"
-import ContentModal from "./contentModal"
+import ContentModal from "../1.Create/contentModal"
 import {useToast} from "@chakra-ui/react"
-import { CopyrightContext } from "../App"
+import { CopyrightContext } from "../../../App"
 import { useState, useContext } from "react"
 import { Web3Context } from "web3-hooks";
 import { ethers } from "ethers"

@@ -1,8 +1,8 @@
 import { Container, SimpleGrid, Heading, Button } from "@chakra-ui/react"
-import { CopyrightContext } from "../App"
+import { CopyrightContext } from "../../../App"
 import { useState, useEffect, useContext } from "react"
 import { Web3Context } from "web3-hooks";
-import { MarketPlaceAddress } from "../contracts/MarketPlacCPR";
+import { MarketPlaceAddress } from "../../../contracts/MarketPlacCPR";
 import { ethers } from "ethers";
 import NFTListed from "./NFTListed"
 

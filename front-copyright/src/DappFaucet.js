@@ -1,8 +1,8 @@
-import Login from "./components/Login";
-import Footer from "./components/Footer";
-import MakeCopyright from "./components/MakeCopyright";
+import Login from "./components/0.Header/Login";
+import Footer from "./components/0.Footer/Footer";
+import MakeCopyright from "./components/0.Body/1.Create/MakeCopyright";
 import Galery from "./components/Galery";
-import MarketPlace from "./components/MarketPlace";
+import MarketPlace from "./components/0.Body/1.MarketPlace/MarketPlace";
 import { TokenContextProvider } from "./context/TokenContext";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 

@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react"
 import { CopyrightContext } from "../App"
 import { ethers } from "ethers";
-import AlertPop from "./AlertPop";
+import AlertPop from "./0.Gallery/AlertPop";
 import { CircularProgress } from "@chakra-ui/react"
 
 const Approval = ({nft, value, setValue}) => {
