@@ -59,7 +59,7 @@ const MarketPlace = () => {
 
   return (
   <Container centerContent maxW="container.xl" py="10">
-    <Heading mb="5">Your NFTs</Heading>
+    <Heading mb="5">Market Cat</Heading>
     <Button onClick={handleGetEtherButton}>Claim {etherBalance} eth</Button>
     <SimpleGrid columns={[1, 1, 1, 2, 3]} gap="8">
       {listing.map((el, index) => {

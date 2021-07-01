@@ -25,7 +25,7 @@ const NFTListed = ({nft}) => {
         </TabPanels>
         <Center>
           <TabList mb="5" >
-            <Tab>Tab 1</Tab>
+            <Tab _selected>Tab 1</Tab>
             <Tab>info</Tab>
           </TabList>
         </Center>
