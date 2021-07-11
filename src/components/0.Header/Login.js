@@ -71,8 +71,6 @@ function Login({ title, desc, ...rest }) {
                                               web3State.account.split("").splice(-4).join("") : (<p style={{color: "red"}}>WRONG NETWORK</p>)}
           </Button>
 
-          <Text></Text>
-
           <VStack >
             <Heading>
               <Text
