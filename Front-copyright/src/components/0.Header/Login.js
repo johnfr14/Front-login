@@ -13,6 +13,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
+
 function Login({ title, desc, ...rest }) {
   const [web3State, login] = useContext(Web3Context);
   const { toggleColorMode } = useColorMode();
@@ -25,6 +26,8 @@ function Login({ title, desc, ...rest }) {
     } else {
     }
   };
+
+  
 
   return (
     <>
@@ -67,6 +70,8 @@ function Login({ title, desc, ...rest }) {
                                               web3State.account.split("").splice(0, 6).join("") + "..." +
                                               web3State.account.split("").splice(-4).join("") : (<p style={{color: "red"}}>WRONG NETWORK</p>)}
           </Button>
+
+          <Text></Text>
 
           <VStack >
             <Heading>

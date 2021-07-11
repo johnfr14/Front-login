@@ -37,26 +37,43 @@ const CreateNFT = ({ value, setValue }) => {
       url: value.url,
       timeStamp: new Date().toDateString()
     }
+    // const { cid } = await ipfs.add('coucou')
+    // console.log(cid.toString())
+    // const stream = ipfs.cat(cid.toString())
+    // let data = ''
+    // for await (const chunk of stream) {
+    //   console.log(chunk.toString())
+    //   // chunks of data are returned as a Buffer, convert it back to a string
+    //   data += chunk.toString()
+    // }
+    // console.log(stream.toString())
+
     setLoading(true)
     try {
       const tx = await CPR.createCopyRight(nft, web3State.account)
       const network = web3State.networkName.toLowerCase()
       const link = `https://${network}.etherscan.io/tx/${tx.hash}`
      
-       toast({
-        title: 'Transaction sent successfully !',
-         render: () => (
-            <Box color="white" p={3} bg="green.500" rounded={20}>
-              <CloseButton />
-              <p style={{fontWeight: "bold", fontSize: "20px"}}>Transaction sent successfully !</p>
-              <br />You can view your pending transaction at hash :
-              <br /><a target="blank" style={{color: "orange"}} href={link}>{tx.hash}</a>
-            </Box>),
-        position: 'bottom',
+      toast({
+        title: "Transation sent successfully",
+        status: "success",
         duration: 9000,
         isClosable: true,
       })
-      await tx.wait()
+
+      toast({
+        title: 'NFT created successfully',
+        status: "success",
+         render: ({id, onClose}) => (
+            <Box color="white" p={3} bg="green.500" rounded={20}>
+              <CloseButton id={id} onClose={onClose}/>
+              <br />You can view your transaction at hash :
+              <br /><a target="blank" style={{color: "orange"}} href={link}>{tx.hash}</a>
+            </Box>),
+        position: "top-right",
+        duration: 9000,
+        isClosable: true,
+      })
     } catch (e) {
        toast({
         title: 'Error',
@@ -70,6 +87,8 @@ const CreateNFT = ({ value, setValue }) => {
       setLoading(false)
     }
   }
+
+ 
 
   return (
     <>
