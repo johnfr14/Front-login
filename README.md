@@ -1,14 +1,5 @@
 [![built-with openzeppelin](https://img.shields.io/badge/built%20with-OpenZeppelin-3677FF)](https://docs.openzeppelin.com/)
 
-# React Faucet
-
-In that website you'll be able to ask for some faucet tokens to enjoy the functianility (that you can see below) in the tab : `Functionality RBT` by interacting with the blockchain Yeah !
-
-NFT contract : https://rinkeby.etherscan.io/address/0x473701F0cB5B4A250948BB8FEc336a8D6eb8Ea07  
-
-network: Rinkeby 
-
-
 ## Create your NFT 
 
 In the main tab `CPR` you can create your own NFT!
@@ -31,9 +22,8 @@ You can view all the information about him and even send/approve/transfer other'
 For a local use just copy paste it into your terminal.
 
 ```
-git clone https://github.com/johnfr14/Copyright-NFT.git
-cd Copyright-NFT/front-copyright
+git clone https://github.com/johnfr14/Front-login.git
+cd Front-login
 yarn
 yarn start
 ```
-# CPR-website
