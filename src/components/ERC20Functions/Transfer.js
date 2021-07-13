@@ -96,11 +96,11 @@ const Transfer = ({nft, value, setValue}) => {
           })}
           />
           {errors.transfer && <AlertPop title={errors.transfer.message} />}
-        <Center mb="3.7rem">
-          <Button onClick={() => setValue(value - 1)} bg="gray.300" variant="solid" m={2} mb={3}><ArrowLeftIcon /></Button>
-          <Button type="submit" colorScheme="teal" size="lg" variant="solid" m={2} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Send"}</Button>
-          <Button onClick={() => setValue(value + 1)} bg="gray.300" variant="solid" m={2} mb={3}><ArrowRightIcon /></Button>
-        </Center>
+          <Center mb="3.7rem">
+            <Button onClick={() => setValue(value - 1)} bg="gray.300" variant="solid" m={2} mb={3}><ArrowLeftIcon /></Button>
+            <Button type="submit" colorScheme="teal" size="lg" variant="solid" m={2} disabled={loading || nft.isApprove}>{loading ? (<><CircularProgress fontSize="15px" isIndeterminate size="30px" color="green.300" /><Spacer /><p>Sending...</p></>) : "Send"}</Button>
+            <Button onClick={() => setValue(value + 1)} bg="gray.300" variant="solid" m={2} mb={3}><ArrowRightIcon /></Button>
+          </Center>
         </form>
     </VStack>
   )
