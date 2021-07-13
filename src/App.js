@@ -4,7 +4,7 @@ import { useContract } from "web3-hooks";
 import { CopyrightAddress, CopyrightAbi } from "./contracts/SacemEnPLS";
 import { MarketPlaceAbi, MarketPlaceAddress} from "./contracts/MarketPlacCPR"
 import { aggregatorV3InterfaceABI, ETHAddress, BTCAddress } from "./contracts/ChainlinkPriceFeed"
-import Login from "./components/0.Body/Login"
+import Login from "./components/0.Body/Logging/Login"
 
 export const CopyrightContext = React.createContext(null);
 

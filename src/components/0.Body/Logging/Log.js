@@ -12,17 +12,16 @@ import { useToast } from "@chakra-ui/react"
 import { useForm } from "react-hook-form";
 import axios from "axios"
 
-const Login = ({setIsLogged}) => {
+const Log = ({setIsLogged}) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const toast = useToast()
   const { toggleColorMode } = useColorMode()
-  const formaBackground = useColorModeValue("gray.100", "gray.600")
 
   const handleSubmitButton = async (data) => {
     try {
       const response = await axios({
       method: 'post',
-      url: 'http://localhost:7777/login',
+      url: 'http://localhost:7777/Log',
       data: {
         username: data.username,
         password: data.password
@@ -46,9 +45,8 @@ const Login = ({setIsLogged}) => {
   } 
 
  return (
-  <Flex height="100vh" alignItems="center" justifyContent="center">
     <form onSubmit={handleSubmit(handleSubmitButton)} m={2} >
-      <Flex direction="column" background={formaBackground} p={12} rounded={6}>
+      <Flex direction="column" >
         <Heading mb="6">Log in</Heading>
 
         <FormControl id="email">
@@ -63,8 +61,7 @@ const Login = ({setIsLogged}) => {
         <Button onClick={toggleColorMode} colorScheme="teal">Toggle color mode</Button>
       </Flex>
     </form>
-  </Flex>
  ) 
 }
 
-export default Login
+export default Log
