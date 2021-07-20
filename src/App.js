@@ -18,7 +18,7 @@ function App() {
 
   return (
     <CopyrightContext.Provider value={{CPR, Market, ETHPriceFeed, BTCPriceFeed}}>
-      {isLogged === true ? <DappFaucet /> : <Login setIsLogged={setIsLogged}/>}
+      <DappFaucet /> 
     </CopyrightContext.Provider>
   );
 }
