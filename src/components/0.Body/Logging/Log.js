@@ -58,7 +58,6 @@ const Log = ({setIsLogged}) => {
         </FormControl>
 
         <Button type="submit" colorScheme="teal" mb={6}>Log in</Button>
-        <Button onClick={toggleColorMode} colorScheme="teal">Toggle color mode</Button>
       </Flex>
     </form>
  ) 
